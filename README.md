@@ -1,6 +1,6 @@
-# AI Student Assistant
+# StudyMate-AI
 
-AI Student Assistant is a PDF-based study assistant that helps students understand lengthy study materials more easily.
+StudyMate-AI is a PDF-based study assistant that helps students understand lengthy study materials more easily.
 
 Users can upload a study PDF, ask questions about the material, and receive explanations based on the uploaded document.
 
@@ -30,7 +30,7 @@ Users can upload a study PDF, ask questions about the material, and receive expl
 ## Project Structure
 
 ```text
-AI-Student-Assistant/
+StudyMate-AI/
 │
 ├── app.py
 ├── requirements.txt
