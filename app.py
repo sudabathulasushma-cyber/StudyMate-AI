@@ -9,9 +9,176 @@ from google import genai
 # =========================================================
 
 st.set_page_config(
-    page_title="StudyMate",
-    page_icon="🤖",
-    layout="wide"
+    page_title="StudyMate AI",
+    page_icon="🎓",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+
+# =========================================================
+# CUSTOM UI
+# =========================================================
+
+st.markdown(
+    """
+    <style>
+
+    /* Main page */
+    .main {
+        padding-top: 1rem;
+    }
+
+    /* Header */
+    .hero {
+        padding: 2rem 2rem 1.5rem 2rem;
+        border-radius: 18px;
+        background: linear-gradient(
+            135deg,
+            #eef2ff 0%,
+            #f8fafc 50%,
+            #ecfeff 100%
+        );
+        border: 1px solid #e2e8f0;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 2.6rem;
+        font-weight: 750;
+        margin-bottom: 0.3rem;
+        color: #111827;
+    }
+
+    .hero-subtitle {
+        font-size: 1.05rem;
+        color: #475569;
+        margin-bottom: 0;
+    }
+
+    /* Section cards */
+    .section-card {
+    padding: 1.25rem;
+    border-radius: 16px;
+    border: 1px solid #475569;
+    background: #1e293b !important;
+    margin-bottom: 1rem;
+    color: #ffffff !important;
+}
+
+.section-card h1,
+.section-card h2,
+.section-card h3,
+.section-card p,
+.section-card div {
+    color: #ffffff !important;
+}
+     
+
+    /* Small labels */
+    .small-label {
+        font-size: 0.82rem;
+        font-weight: 650;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+
+    /* Answer box */
+    .answer-header {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Source pages */
+    .source-box {
+        padding: 0.8rem 1rem;
+        border-radius: 10px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        margin-top: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+        text-align: center;
+        color: #94a3b8;
+        font-size: 0.82rem;
+        padding: 2rem 0 1rem 0;
+    }
+
+    /* Upload area */
+    [data-testid="stFileUploader"] {
+    border: 2px dashed #6366f1 !important;
+    border-radius: 16px;
+    padding: 1rem;
+    background: #f8fafc !important;
+}
+
+[data-testid="stFileUploader"] {
+    border: 2px dashed #818cf8 !important;
+    border-radius: 16px !important;
+    padding: 1rem !important;
+    background: #1e293b !important;
+}
+
+[data-testid="stFileUploader"] section {
+    background: #1e293b !important;
+    border-radius: 12px !important;
+}
+
+[data-testid="stFileUploader"] section > div {
+    background: #1e293b !important;
+}
+
+[data-testid="stFileUploader"] label {
+    color: #ffffff !important;
+}
+
+[data-testid="stFileUploader"] small {
+    color: #cbd5e1 !important;
+}
+
+[data-testid="stFileUploader"] button {
+    color: #111827 !important;
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+}
+
+    /* Buttons */
+    .stButton > button {
+        border-radius: 10px;
+        font-weight: 650;
+        min-height: 2.6rem;
+    }
+
+    /* Metrics */
+     [data-testid="stMetric"] {
+    border: 1px solid #475569 !important;
+    border-radius: 14px !important;
+    padding: 1rem !important;
+    background: #1e293b !important;
+}
+
+[data-testid="stMetricLabel"] {
+    color: #cbd5e1 !important;
+}
+
+[data-testid="stMetricValue"] {
+    color: #ffffff !important;
+}
+
+[data-testid="stMetricDelta"] {
+    color: #cbd5e1 !important;
+}
+    
+
+    </style>
+    """,
+    unsafe_allow_html=True
 )
 
 
@@ -25,15 +192,70 @@ client = genai.Client(
 
 
 # =========================================================
-# TITLE
+# HERO HEADER
 # =========================================================
 
-st.title("🤖 StudyMate")
-
-st.write(
-    "Upload your study PDF and ask questions "
-    "to understand the material easily."
+st.markdown(
+    """
+    <div class="hero">
+        <div class="hero-title">🎓 StudyMate AI</div>
+        <div class="hero-subtitle">
+            Turn lengthy study PDFs into an interactive learning experience.
+            Upload your material, ask questions, and understand concepts easily.
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
 )
+
+
+# =========================================================
+# SIDEBAR
+# =========================================================
+
+with st.sidebar:
+
+    st.markdown("## 🎓 StudyMate")
+
+    st.markdown(
+        """
+        **Your AI study assistant**
+
+        Upload a study PDF and use StudyMate to:
+
+        📚 Understand concepts  
+        💬 Ask questions  
+        📝 Generate summaries  
+        🔎 Find relevant pages  
+        🧠 Study in simple language
+        """
+    )
+
+    st.divider()
+
+    st.markdown("### 💡 How it works")
+
+    st.markdown(
+        """
+        **1. Upload**  
+        Add your study PDF.
+
+        **2. Ask**  
+        Ask a question about the material.
+
+        **3. Understand**  
+        StudyMate finds relevant content and explains it.
+
+        **4. Review**  
+        Check the source pages from your PDF.
+        """
+    )
+
+    st.divider()
+
+    st.caption(
+        "StudyMate answers questions using your uploaded study material."
+    )
 
 
 # =========================================================
@@ -210,10 +432,6 @@ def is_front_matter(
 )
 def process_pdf(uploaded_file):
 
-    # IMPORTANT:
-    # Pass the uploaded file directly.
-    # Do NOT use uploaded_file.getvalue().
-
     reader = PdfReader(
         uploaded_file
     )
@@ -301,12 +519,10 @@ def find_relevant_pages(
 
         page_normal = page["normal"]
 
-        # Exact question phrase
         if question_normal in page_normal:
 
             score += 20
 
-        # Keyword matching
         for keyword in keywords:
 
             if keyword in page["words"]:
@@ -324,7 +540,6 @@ def find_relevant_pages(
                     5
                 )
 
-        # Reduce front-matter pages
         if page["front_matter"]:
 
             score -= 10
@@ -551,10 +766,6 @@ PDF context:
 {context}
 """
 
-    # =====================================================
-    # TRY GEMINI
-    # =====================================================
-
     try:
 
         response = client.models.generate_content(
@@ -563,10 +774,6 @@ PDF context:
         )
 
         return response.text
-
-    # =====================================================
-    # IF GEMINI FAILS → PDF FALLBACK
-    # =====================================================
 
     except Exception:
 
@@ -604,9 +811,6 @@ def create_ai_summary(
     if not useful_pages:
 
         return None
-
-    # Select representative pages
-    # from the whole document.
 
     max_context_pages = 20
 
@@ -720,10 +924,6 @@ PDF content:
 
     except Exception:
 
-        # =================================================
-        # SUMMARY FALLBACK
-        # =================================================
-
         summary_sentences = []
 
         for page in selected_pages:
@@ -763,9 +963,24 @@ PDF content:
 # PDF UPLOAD
 # =========================================================
 
+st.markdown(
+    """
+    <div class="section-card">
+        <div class="small-label">START HERE</div>
+        <h3>📄 Upload your study material</h3>
+        <p>
+            Upload a PDF and let StudyMate understand the material
+            so you can ask questions about it.
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 uploaded_file = st.file_uploader(
-    "📄 Upload your study PDF",
-    type=["pdf"]
+    "Choose a PDF file",
+    type=["pdf"],
+    label_visibility="collapsed"
 )
 
 
@@ -791,228 +1006,282 @@ if uploaded_file is not None:
     # DOCUMENT INFORMATION
     # =====================================================
 
-    col1, col2, col3 = st.columns(
-        3
+    study_pages = len(
+        [
+            p
+            for p in pages
+            if not p["front_matter"]
+            and p["normal"]
+        ]
     )
+
+    st.markdown("### 📊 Document Overview")
+
+    col1, col2, col3 = st.columns(3)
 
     with col1:
 
         st.metric(
-            "Pages",
+            "📄 Pages",
             len(pages)
         )
 
     with col2:
 
         st.metric(
-            "Words",
+            "📝 Words",
             f"{total_words:,}"
         )
 
     with col3:
 
-        study_pages = len(
-            [
-                p
-                for p in pages
-                if not p["front_matter"]
-                and p["normal"]
-            ]
-        )
-
         st.metric(
-            "Study Pages",
+            "📚 Study Pages",
             study_pages
         )
 
     st.divider()
 
     # =====================================================
-    # AI SUMMARY
+    # TABS
     # =====================================================
 
-    st.subheader(
-        "📚 AI Study Summary"
-    )
-
-    if st.button(
-        "Generate Summary"
-    ):
-
-        with st.spinner(
-            "🤖 Creating your study summary..."
-        ):
-
-            summary = create_ai_summary(
-                pages
-            )
-
-        if summary:
-
-            st.markdown(
-                summary
-            )
-
-    st.divider()
-
-    # =====================================================
-    # ASK STUDYMATE
-    # =====================================================
-
-    st.subheader(
-        "💬 Ask StudyMate"
-    )
-
-    question = st.text_input(
-        "Ask a question about your PDF",
-        placeholder="Example: What is data science?"
-    )
-
-    explanation_mode = st.selectbox(
-        "Explanation style",
+    summary_tab, ask_tab, material_tab = st.tabs(
         [
-            "Simple",
-            "Detailed",
-            "Exam-ready"
+            "📚 Study Summary",
+            "💬 Ask StudyMate",
+            "📖 Study Material"
         ]
     )
 
-    if st.button(
-        "🤖 Ask StudyMate"
-    ):
+    # =====================================================
+    # SUMMARY TAB
+    # =====================================================
 
-        if not question.strip():
+    with summary_tab:
 
-            st.warning(
-                "Please enter a question."
-            )
+        st.markdown(
+            "### 📚 AI Study Summary"
+        )
 
-        else:
+        st.write(
+            "Get a concise overview of the important material "
+            "from your uploaded PDF."
+        )
 
-            # ---------------------------------------------
-            # FIND PDF CONTENT
-            # ---------------------------------------------
+        if st.button(
+            "✨ Generate Summary",
+            key="summary_button",
+            use_container_width=True
+        ):
 
             with st.spinner(
-                "🔎 Finding relevant information..."
+                "🤖 Creating your study summary..."
             ):
 
-                context, relevant_pages = (
-                    build_question_context(
-                        question,
-                        pages
-                    )
+                summary = create_ai_summary(
+                    pages
                 )
 
-            if not context:
+            if summary:
 
-                st.info(
-                    "I couldn't find relevant information "
-                    "for this question in the uploaded PDF."
+                st.markdown(
+                    summary
+                )
+
+    # =====================================================
+    # ASK TAB
+    # =====================================================
+
+    with ask_tab:
+
+        st.markdown(
+            "### 💬 Ask StudyMate"
+        )
+
+        st.write(
+            "Ask anything that is covered in your uploaded PDF."
+        )
+
+        question = st.text_input(
+            "Your question",
+            placeholder="Example: What is data science?",
+            key="question_input"
+        )
+
+        explanation_mode = st.selectbox(
+            "How should StudyMate explain it?",
+            [
+                "Simple",
+                "Detailed",
+                "Exam-ready"
+            ],
+            key="explanation_mode"
+        )
+
+        if st.button(
+            "🤖 Ask StudyMate",
+            key="ask_button",
+            use_container_width=True
+        ):
+
+            if not question.strip():
+
+                st.warning(
+                    "Please enter a question."
                 )
 
             else:
 
-                # -----------------------------------------
-                # AI + FALLBACK
-                # -----------------------------------------
-
                 with st.spinner(
-                    "🤖 StudyMate is preparing your answer..."
+                    "🔎 Finding relevant information..."
                 ):
 
-                    answer = ask_ai(
-                        question,
-                        context,
-                        explanation_mode
+                    context, relevant_pages = (
+                        build_question_context(
+                            question,
+                            pages
+                        )
                     )
 
-                st.markdown(
-                    "### 🤖 StudyMate"
-                )
+                if not context:
 
-                st.write(
-                    answer
-                )
+                    st.info(
+                        "I couldn't find relevant information "
+                        "for this question in the uploaded PDF."
+                    )
 
-                # -----------------------------------------
-                # SOURCE PAGES
-                # -----------------------------------------
+                else:
 
-                if relevant_pages:
+                    with st.spinner(
+                        "🤖 StudyMate is preparing your answer..."
+                    ):
+
+                        answer = ask_ai(
+                            question,
+                            context,
+                            explanation_mode
+                        )
 
                     st.markdown(
-                        "### 📖 Source Pages"
+                        """
+                        <div class="section-card">
+                            <div class="answer-header">
+                                🤖 StudyMate's Answer
+                            </div>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
                     )
 
-                    page_numbers = [
-                        str(
-                            page["page"]
-                        )
-                        for page
-                        in relevant_pages
-                    ]
-
-                    st.write(
-                        "Pages: "
-                        + ", ".join(
-                            page_numbers
-                        )
+                    st.markdown(
+                        answer
                     )
 
-    st.divider()
+                    if relevant_pages:
+
+                        st.markdown(
+                            "### 📖 Source Pages"
+                        )
+
+                        page_numbers = [
+                            str(
+                                page["page"]
+                            )
+                            for page
+                            in relevant_pages
+                        ]
+
+                        st.info(
+                            "This answer was generated using "
+                            "content from PDF page(s): "
+                            + ", ".join(
+                                page_numbers
+                            )
+                        )
 
     # =====================================================
-    # EXTRACTED STUDY MATERIAL
+    # MATERIAL TAB
     # =====================================================
 
-    st.subheader(
-        "📖 Extracted Study Material"
-    )
-
-    st.caption(
-        "The complete PDF is extracted page by page. "
-        "Only the selected page is displayed."
-    )
-
-    page_options = [
-        page["page"]
-        for page in pages
-        if page["text"]
-    ]
-
-    if page_options:
-
-        selected_page_number = st.selectbox(
-            "Select a page",
-            page_options
-        )
-
-        selected_page = next(
-            page
-            for page in pages
-            if page["page"]
-            == selected_page_number
-        )
+    with material_tab:
 
         st.markdown(
-            f"### Page {selected_page_number}"
+            "### 📖 Extracted Study Material"
         )
 
-        st.text_area(
-            "Extracted text",
-            selected_page["text"],
-            height=400
+        st.write(
+            "The complete PDF is extracted page by page. "
+            "Only the selected page is displayed."
         )
 
-    else:
+        page_options = [
+            page["page"]
+            for page in pages
+            if page["text"]
+        ]
 
-        st.warning(
-            "No readable text was found in this PDF."
-        )
+        if page_options:
+
+            selected_page_number = st.selectbox(
+                "Select a page to review",
+                page_options,
+                key="page_selector"
+            )
+
+            selected_page = next(
+                page
+                for page in pages
+                if page["page"]
+                == selected_page_number
+            )
+
+            st.markdown(
+                f"### 📄 Page {selected_page_number}"
+            )
+
+            st.text_area(
+                "Extracted text",
+                selected_page["text"],
+                height=450,
+                label_visibility="collapsed"
+            )
+
+        else:
+
+            st.warning(
+                "No readable text was found in this PDF."
+            )
 
 else:
 
-    st.info(
-        "👆 Upload a PDF to start using StudyMate."
+    st.markdown(
+        """
+        <div style="
+            text-align:center;
+            padding:2rem;
+            color:#64748b;
+        ">
+            <h3>📚 Your study material starts here</h3>
+            <p>
+                Upload a PDF above to ask questions,
+                generate summaries, and explore your material.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True
     )
+
+
+# =========================================================
+# FOOTER
+# =========================================================
+
+st.markdown(
+    """
+    <div class="footer">
+        🎓 StudyMate AI · Learn smarter from your own study material
+    </div>
+    """,
+    unsafe_allow_html=True
+)
