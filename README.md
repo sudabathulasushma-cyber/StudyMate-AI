@@ -40,7 +40,7 @@ AI-Student-Assistant/
     └── config.toml
 ```
 ## Architecture
-![StudyMate AI Architecture](assets/architecture.png)
+![StudyMate AI Architecture](assets/Architecture.png)
 
 ## Screenshots
 
