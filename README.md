@@ -39,8 +39,7 @@ AI-Student-Assistant/
 └── .streamlit/
     └── config.toml
 ## Architecture
-
-![StudyMate AI Architecture](./assets/architecture.png)
+![StudyMate AI Architecture](assets/architecture.png)
 ## Screenshots
 
 ### Home / Upload
