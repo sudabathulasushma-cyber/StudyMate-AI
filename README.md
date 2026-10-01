@@ -41,3 +41,22 @@ AI-Student-Assistant/
 ## Architecture
 
 ![StudyMate AI Architecture](assets/architecture.png)
+## Screenshots
+
+### Home / Upload
+![StudyMate AI Home](assets/01.%20home.png)
+
+### Document Overview
+![Document Overview](assets/02.%20document%20overview.png)
+
+### Study Summary
+![Study Summary](assets/03.%20studysummary.png)
+
+### Ask StudyMate
+![Ask StudyMate](assets/04.%20ask%20studymate.png)
+
+### Ask StudyMate — AI/Fallback
+![Ask StudyMate 2](assets/05.%20ask%20studymate%202.png)
+
+### Study Material
+![Study Material](assets/06.%20studymaterial.png)
