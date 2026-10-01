@@ -38,7 +38,6 @@ AI-Student-Assistant/
 │
 └── .streamlit/
     └── config.toml
-    ```
 
 ## Architecture
 ![StudyMate AI Architecture](assets/architecture.png)
